@@ -8,18 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextViewDelegate {
+    
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if (textView.text == "") textViewDidEndEditing(textView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if (textView.text == "") {
+            textView.text = "Placeholder"
+            textView.textColor = UIColor.lightGrayColor()
+        }
+        textView.resignFirstResponder()
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView){
+        if (textView.text == "Placeholder"){
+            textView.text = ""
+            textView.textColor = UIColor.blackColor()
+        }
+        textView.becomeFirstResponder()
+    }
 
 }
 
