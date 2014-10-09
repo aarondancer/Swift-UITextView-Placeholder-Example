@@ -18,6 +18,12 @@ class ViewController: UIViewController, UITextViewDelegate {
         if (textView.text == "") {
             textViewDidEndEditing(textView)
         }
+        var tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapDismiss)
+    }
+    
+    func dismissKeyboard(){
+        textView.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
