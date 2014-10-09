@@ -14,7 +14,10 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (textView.text == "") textViewDidEndEditing(textView)
+        textView.delegate = self
+        if (textView.text == "") {
+            textViewDidEndEditing(textView)
+        }
     }
 
     override func didReceiveMemoryWarning() {
